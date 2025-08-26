@@ -1,0 +1,47 @@
+body {
+    font-family: 'KoHo', sans-serif;
+}
+
+.main-header {
+    background-color: #504b38 !important;
+    color: #f8f3d9 !important;
+}
+
+.main-sidebar {
+    background-color: #b9b28a !important;
+}
+
+.sidebar {
+    background-color: #ebe5c2 !important;
+}
+
+.nav-link.active {
+    background-color: #f8f3d9 !important;
+    color: #504b38 !important;
+}
+.cart-table thead {
+    background-color: #504b38;
+    color: #f8f3d9;
+}
+
+.btn-theme {
+    background-color: #504b38;
+    color: #f8f3d9;
+    border: none;
+}
+
+.btn-theme:hover {
+    background-color: #b9b28a;
+    color: #504b38;
+}
+
+.btn-outline-theme {
+    border: 1px solid #504b38;
+    color: #504b38;
+    background-color: transparent;
+}
+
+.btn-outline-theme:hover {
+    background-color: #504b38;
+    color: #f8f3d9;
+}

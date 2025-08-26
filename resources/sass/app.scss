@@ -1,0 +1,35 @@
+// @import 'bootstrap/scss/bootstrap';
+
+// @import "bootstrap-icons/font/bootstrap-icons.css";
+
+@import url('https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+body {
+    font-family: 'KoHo', sans-serif;
+}
+.icon-link { //link
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: underline;
+            color: #F8F3D9;
+}
+
+.display-3 { //เมูนูสินค้า
+            font-size: 3.5rem;
+            color: #F8F3D9;
+}
+
+.display-8 { //ข้อความ
+            color: #F8F3D9;
+}
+
+.bi-cup-hot {
+    color: #B9B28A;
+    font-size: 1.5rem;
+}
+
+.text-olive {
+    // color: #504b38;
+    color: aquamarine;
+}
