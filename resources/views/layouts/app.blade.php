@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
-<!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
     
 @include('layouts.partials.header')
     <body>
