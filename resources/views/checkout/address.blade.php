@@ -51,7 +51,7 @@
         <div class="card shadow-sm p-4 mb-4">
             <h5 class="mb-3" style="color: #504b38;">ข้อความเพิ่มเติม</h5>
             <div class="form-group">
-                <textarea name="order_note" class="form-control" rows="3" placeholder="เช่น จัดส่งช่วงเช้า, ฝากไว้ที่ รปภ. เป็นต้น"></textarea>
+                <textarea name="order_note" class="form-control" rows="3" placeholder="สามารถใส่รายละเอียดของการสั่งสินค้าเพิ่มเติมได้ที่นี่ เช่น ระบุระดับความหวานของเครื่องดื่ม การแยกน้ำแข็ง หรือรายละเอียดอื่น ๆ ได้"></textarea>
             </div>
         </div>
 

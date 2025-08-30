@@ -66,7 +66,7 @@ class ProductController extends Controller
             'product_pic' => $uploadResult->result->filePath,
         ]);
 
-        return redirect()->route('admin.products.index')->with('success', 'Product added successfully!');
+        return redirect()->route('admin.products.index')->with('success', 'เพิ่มข้อมูลสินค้าใหม่สําเร็จ');
     }
 
     public function edit(Product $product)
@@ -116,7 +116,7 @@ class ProductController extends Controller
         // 4. อัปเดตข้อมูลลงในฐานข้อมูล
         $product->update($updateData);
 
-        return redirect()->route('admin.products.index')->with('success', 'Product updated successfully!');
+        return redirect()->route('admin.products.index')->with('success', 'แก้ไขข้อมูลสินค้าสําเร็จ');
     }
 
     public function destroy(Product $product)
@@ -129,6 +129,6 @@ class ProductController extends Controller
             }
         }
         $product->delete();
-        return back()->with('success', 'Product deleted successfully!');
+        return back()->with('success', 'ลบข้อมูลสินค้าสําเร็จ');
     }
 }

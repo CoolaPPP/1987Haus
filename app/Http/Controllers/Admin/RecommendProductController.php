@@ -31,7 +31,7 @@ class RecommendProductController extends Controller
             'recommend_note' => 'nullable|string',
         ]);
         RecommendProduct::create($request->all());
-        return redirect()->route('admin.recommend-products.index')->with('success', 'Added to recommended list.');
+        return redirect()->route('admin.recommend-products.index')->with('success', 'เพิ่มข้อมูลสินค้าแนะนำสำเร็จ');
     }
 
     public function edit(RecommendProduct $recommendProduct)
@@ -43,12 +43,12 @@ class RecommendProductController extends Controller
     {
         $request->validate(['recommend_note' => 'nullable|string']);
         $recommendProduct->update($request->all());
-        return redirect()->route('admin.recommend-products.index')->with('success', 'Recommendation updated.');
+        return redirect()->route('admin.recommend-products.index')->with('success', 'แก้ไขข้อมูลสินค้าแนะนำสำเร็จ');
     }
 
     public function destroy(RecommendProduct $recommendProduct)
     {
         $recommendProduct->delete();
-        return back()->with('success', 'Removed from recommended list.');
+        return back()->with('success', 'ลบข้อมูลสินค้าแนะนำสำเร็จ');
     }
 }

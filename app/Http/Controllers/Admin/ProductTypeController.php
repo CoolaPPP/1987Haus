@@ -18,7 +18,7 @@ class ProductTypeController extends Controller
     {
         $request->validate(['producttype_name' => 'required|string|max:255|unique:product_types']);
         ProductType::create($request->all());
-        return back()->with('success', 'เพิ่มประเภทสินค้าใหม่สำเร็จ');
+        return back()->with('success', 'เพิ่มข้อมูลประเภทสินค้าใหม่สำเร็จ');
     }
 
     public function edit($id)
@@ -36,13 +36,13 @@ class ProductTypeController extends Controller
         $productType = ProductType::findOrFail($id);
         $productType->update($request->all());
 
-        return redirect()->route('admin.product-types.index')->with('success', 'Product type updated successfully!');
+        return redirect()->route('admin.product-types.index')->with('success', 'แก้ไขข้อมูลประเภทสินค้าสำเร็จ');
     }
     
     public function destroy($id)
     {
         $productType = ProductType::findOrFail($id);
         $productType->delete();
-        return back()->with('success', 'ลบประเภทสินค้าสำเร็จ');
+        return back()->with('success', 'ลบข้อมูลประเภทสินค้าสำเร็จ');
     }
 }

@@ -43,6 +43,6 @@ class ProfileController extends Controller
 
         $customer->save();
 
-        return back()->with('success', 'แก้ไขข้อมูลส่วนตัวสำเร็จ!');
+        return back()->with('success', 'แก้ไขข้อมูลส่วนตัวสำเร็จ');
     }
 }

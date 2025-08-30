@@ -25,7 +25,7 @@ class OrderStatusController extends Controller
             'orderstatus_name' => 'required|string|max:255|unique:order_statuses',
         ]);
         OrderStatus::create($request->all());
-        return redirect()->route('admin.order-statuses.index')->with('success', 'Order status created successfully.');
+        return redirect()->route('admin.order-statuses.index')->with('success', 'เพิ่มข้อมูลสถานะคำสั่งซื้อใหม่สำเร็จ');
     }
 
     public function edit(OrderStatus $orderStatus)
@@ -39,12 +39,12 @@ class OrderStatusController extends Controller
             'orderstatus_name' => 'required|string|max:255|unique:order_statuses,orderstatus_name,' . $orderStatus->id,
         ]);
         $orderStatus->update($request->all());
-        return redirect()->route('admin.order-statuses.index')->with('success', 'Order status updated successfully.');
+        return redirect()->route('admin.order-statuses.index')->with('success', 'แก้ไขข้อมูลสถานะคำสั่งซื้อสำเร็จ');
     }
 
     public function destroy(OrderStatus $orderStatus)
     {
         $orderStatus->delete();
-        return back()->with('success', 'Order status deleted successfully.');
+        return back()->with('success', 'ลบข้อมูลสถานะคำสั่งซื้อสำเร็จ');
     }
 }

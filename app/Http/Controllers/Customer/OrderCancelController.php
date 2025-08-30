@@ -48,6 +48,6 @@ class OrderCancelController extends Controller
             $order->update(['order_status_id' => 4]);
         });
 
-        return redirect()->route('customer.dashboard')->with('success', 'การสั่ง #' . $order->id . ' ถูกยกเลิกแล้ว!');
+        return redirect()->route('customer.dashboard')->with('success', 'การสั่ง #' . $order->id . ' ถูกยกเลิกแล้ว');
     }
 }

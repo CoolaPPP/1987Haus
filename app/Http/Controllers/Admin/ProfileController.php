@@ -50,6 +50,6 @@ class ProfileController extends Controller
 
         $owner->save();
 
-        return back()->with('success', 'Profile updated successfully!');
+        return back()->with('success', 'แก้ไขข้อมูลส่วนตัวสำเร็จ');
     }
 }

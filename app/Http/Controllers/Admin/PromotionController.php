@@ -30,7 +30,7 @@ class PromotionController extends Controller
         ]);
 
         Promotion::create($request->all());
-        return redirect()->route('admin.promotions.index')->with('success', 'เพิ่มโปรโมชันสําเร็จ');
+        return redirect()->route('admin.promotions.index')->with('success', 'เพิ่มข้อมูลโปรโมชันสําเร็จ');
     }
 
     public function edit(Promotion $promotion)
@@ -48,12 +48,12 @@ class PromotionController extends Controller
         ]);
         
         $promotion->update($request->except('id'));
-        return redirect()->route('admin.promotions.index')->with('success', 'แก้ไขโปรโมชันสำเร็จ');
+        return redirect()->route('admin.promotions.index')->with('success', 'แก้ไขข้อมูลโปรโมชันสำเร็จ');
     }
 
     public function destroy(Promotion $promotion)
     {
         $promotion->delete();
-        return back()->with('success', 'ลบโปรโมชันสำเร็จ');
+        return back()->with('success', 'ลบข้อมูลโปรโมชันสำเร็จ');
     }
 }

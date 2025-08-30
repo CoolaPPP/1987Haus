@@ -15,7 +15,7 @@ class OrderConfirmController extends Controller
     public function create(Order $order)
     {
         abort_if($order->customer_id !== Auth::id(), 403);
-        abort_if($order->order_status_id != 3, 403, 'การสั่งซื้อนี้ไม่อยู่ในสถานะที่สามารถยืนยันการรับสินค้าได้!');
+        abort_if($order->order_status_id != 3, 403, 'การสั่งซื้อนี้ไม่อยู่ในสถานะที่สามารถยืนยันการรับสินค้าได้');
         
         $paymentTime = Carbon::parse($order->payment->payment_datetime);
         $confirmAvailableAt = $paymentTime->copy()->addMinutes(10);
@@ -50,6 +50,6 @@ class OrderConfirmController extends Controller
             $order->update(['order_status_id' => 5]);
         });
 
-        return redirect()->route('customer.dashboard')->with('success', 'ขอบคุณสำหรับการยืนยันการรับสินค้า!');
+        return redirect()->route('customer.dashboard')->with('success', 'ขอบคุณสำหรับการยืนยันการรับสินค้า');
     }
 }

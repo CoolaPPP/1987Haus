@@ -32,7 +32,7 @@ class LoginController extends Controller
             return redirect()->intended('/admin/home');
         }   
         return back()->withInput($request->only('email', 'remember'))
-                     ->withErrors(['email' => 'Email or Password is not correct.']);
+                     ->withErrors(['email' => 'รหัสผ่านหรืออีเมลไม่ถูกต้อง']);
     }
 
     //Admin Logout

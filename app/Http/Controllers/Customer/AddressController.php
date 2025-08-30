@@ -20,7 +20,7 @@ class AddressController extends Controller
         
         Auth::user()->shippingAddresses()->create($request->all());
         
-        return redirect()->route('customer.dashboard')->with('success', 'เพิ่มข้อมูลที่อยู่สำหรับจัดส่งสินค้าสำเร็จ!');
+        return redirect()->route('customer.dashboard')->with('success', 'เพิ่มข้อมูลที่อยู่สำหรับจัดส่งสินค้าสำเร็จ');
     }
 
     public function edit(ShippingAddress $address)
@@ -35,7 +35,7 @@ class AddressController extends Controller
         abort_if($address->customer_id !== Auth::id(), 403);
         $request->validate(['address' => 'required|string']);
         $address->update($request->all());
-        return redirect()->route('customer.dashboard')->with('success', 'แก้ไขข้อมูลที่อยู่สำหรับจัดส่งสินค้าสำเร็จ!');
+        return redirect()->route('customer.dashboard')->with('success', 'แก้ไขข้อมูลที่อยู่สำหรับจัดส่งสินค้าสำเร็จ');
     }
 
     public function destroy(ShippingAddress $address)
@@ -44,10 +44,10 @@ class AddressController extends Controller
 
         // เงื่อนไข: ต้องมีที่อยู่มากกว่า 1 ที่ถึงจะลบได้
         if (Auth::user()->shippingAddresses()->count() <= 1) {
-            return back()->with('error', 'ไม่สามารถลบที่อยู่สำหรับจัดส่งสินค้าได้ เนื่องจากคุณต้องมีอย่างน้อย 1 ที่อยู่สำหรับจัดส่งสินค้า!');
+            return back()->with('error', 'ไม่สามารถลบที่อยู่สำหรับจัดส่งสินค้าได้ เนื่องจากคุณต้องมีอย่างน้อย 1 ที่อยู่สำหรับจัดส่งสินค้า');
         }
 
         $address->delete();
-        return back()->with('success', 'ลบข้อมูลที่อยู่สำหรับจัดส่งสินค้าสำเร็จ!');
+        return back()->with('success', 'ลบข้อมูลที่อยู่สำหรับจัดส่งสินค้าสำเร็จ');
     }
 }

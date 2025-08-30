@@ -24,7 +24,7 @@ class CartController extends Controller
             ];
         }
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'สินค้าได้ถูกเพิ่มลงในตะกร้าเรียบร้อยแล้ว!');
+        return redirect()->back()->with('success', 'สินค้าได้ถูกเพิ่มลงในตะกร้าสำเร็จ');
     }
 
     public function index()
@@ -38,7 +38,7 @@ class CartController extends Controller
         if (isset($cart[$product->id])) {
             $cart[$product->id]['quantity'] = $request->quantity;
             session()->put('cart', $cart);
-            return back()->with('success', 'อัปเดตจำนวนสินค้าในตะกร้าเรียบร้อยแล้ว!');
+            return back()->with('success', 'อัปเดตจำนวนสินค้าในตะกร้าสำเร็จ');
         }
     }
 
@@ -48,7 +48,7 @@ class CartController extends Controller
         if (isset($cart[$product->id])) {
             unset($cart[$product->id]);
             session()->put('cart', $cart);
-            return back()->with('success', 'สินค้าได้ถูกลบออกจากตะกร้าเรียบร้อยแล้ว!');
+            return back()->with('success', 'สินค้าได้ถูกลบออกจากตะกร้าสำเร็จ');
         }
     }
 
@@ -86,6 +86,6 @@ class CartController extends Controller
             'discount' => $promo->promotion_discount
         ]);
 
-        return back()->with('alert-message', 'ใช้โปรโมชันสำเร็จ!');
+        return back()->with('alert-message', 'ใช้โปรโมชันสำเร็จ');
     }
 }
