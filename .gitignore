@@ -24,5 +24,3 @@ Homestead.yaml
 npm-debug.log
 Thumbs.db
 yarn-error.log
-/resources/views/layouts/partials/info.blade.php
-/resources/views/admin/layouts/partials/info.blade.php
