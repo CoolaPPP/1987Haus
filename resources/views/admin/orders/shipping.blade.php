@@ -57,6 +57,13 @@
             </tbody>
         </table>
     </div>
+    
     <div class="card-footer">{{ $shippingOrders->links() }}</div>
 </div>
+<div class="px-3">
+    <a href="{{ route('admin.dashboard') }}" class="btn btn-theme">
+        กลับไปยังหน้าจัดการการขาย
+    </a>
+</div>
+
 @endsection

@@ -83,6 +83,11 @@
     </div>
     <div class="card-footer">{{ $newOrders->links() }}</div>
 </div>
+<div class="px-3">
+    <a href="{{ route('admin.dashboard') }}" class="btn btn-theme">
+        กลับไปยังหน้าจัดการการขาย
+    </a>
+</div>
 
 <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">

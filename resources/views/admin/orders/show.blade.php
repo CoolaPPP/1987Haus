@@ -149,6 +149,13 @@
                     <p class="text-muted text-center">ไม่มีการดำเนินการสำหรับสถานะนี้</p>
                 @endif
             </div>
+            <div class="px-3">
+                <hr class="px-2">
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-theme btn-block">
+                    กลับไปยังหน้าจัดการการขาย
+                </a>
+                <hr class="px-2">
+            </div>
         </div>
     </div>
 </div>
