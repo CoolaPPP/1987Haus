@@ -24,7 +24,7 @@ public function boot(): void
 {
     // สร้าง View Composer สำหรับ admin.dashboard
     View::composer('admin.dashboard', function ($view) {
-        $newOrdersCount = Order::where('order_status_id', 2)->count();
+        $newOrdersCount = Order::whereIn('order_status_id', [2,6])->count();
         $shippingOrdersCount = Order::where('order_status_id', 3)->count();
         $deliveredOrdersCount = Order::where('order_status_id', 5)->count();
         $canceledOrdersCount = Order::where('order_status_id', 4)->count();

@@ -10,7 +10,7 @@ class OwnerSeeder extends Seeder
     public function run(): void
     {
         DB::table('owners')->insert([
-            'name' => 'เผ่าพันธ์ โพธิ์ธรรม',
+            'name' => '1987Haus Admin',
             'email' => '1987haus@gmail.com',
             'password' => hash('sha256', '1987haus'), 
         ]);

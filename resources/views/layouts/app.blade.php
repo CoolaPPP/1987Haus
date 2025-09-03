@@ -1,3 +1,4 @@
+@include('layouts.partials.info')
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
     
@@ -5,7 +6,6 @@
     <body>
         @include('layouts.partials.navbar')
 
-            <!-- Main Content -->
             @yield('content')
     
         @include('layouts.partials.footer')

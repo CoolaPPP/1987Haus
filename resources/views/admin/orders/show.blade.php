@@ -5,6 +5,25 @@
 @section('content-header', 'แสดงรายละเอียดคำสั่งซื้อ #' . $order->id)
 
 @section('content')
+<style>
+    .btn-theme {
+        background-color: #504b38;
+        color: #f8f3d9;
+        border: none;
+    }
+    .btn-theme:hover {
+        background-color: #b9b28a;
+        color: #504b38;
+    }
+    .btn-outline-theme {
+        border: 1px solid #504b38;
+        color: #504b38;
+    }
+    .btn-outline-theme:hover {
+        background-color: #504b38;
+        color: #f8f3d9;
+    }
+</style>
 <div class="row">
     <div class="col-md-8">
         
@@ -45,8 +64,8 @@
             <div class="card-body">
                 @if($order->order_note)
                     <p class="mb-0">
-                        <strong>ข้อความแนบจากการสั่งสินค้าเพิ่มเติม :</strong><br>
-                        <span class="ml-3 font-italic text-muted">"{{ $order->order_note }}"</span>
+                        <strong>ข้อความแนบจากการสั่งสินค้าเพิ่มเติม</strong><br>
+                        <span class="ml-3 ">"{{ $order->order_note }}"</span>
                     </p>
                 @else
                     <p class="mb-0"><em class="text-muted">ไม่มีข้อความเพิ่มเติม</em></p>
@@ -68,14 +87,6 @@
                 @if($order->shippingAddress->address_note)
                     <p class="mb-0">
                         <strong>ข้อมูลที่อยู่เพิ่มเติม :</strong> {{ $order->shippingAddress->address_note }}
-                    </p>
-                @endif
-
-                @if($order->order_note)
-                    <hr>
-                    <p class="mb-0">
-                        <strong>ข้อความแนบจากการสั่งสินค้าเพิ่มเติม :</strong><br>
-                        <span class="ml-3 font-italic text-muted">"{{ $order->order_note }}"</span>
                     </p>
                 @endif
             </div>
@@ -109,34 +120,34 @@
                     <span class="float-right">฿ {{ number_format($order->net_price, 2) }}</span>
                 </h4>
 
-                <!-- <hr> 
-                <a href="{{ route('admin.orders.receipt', $order->id) }}" class="btn btn-success btn-block">
-                    @if($order->order_status_id == 2)
-                        ยืนยันและพิมพ์ใบปะหน้าสินค้า
-                    @else
-                        พิมพ์ใบปะหน้าสินค้าอีกครั้ง
-                    @endif
-                </a> -->
                 @if($order->order_status_id == 2)
-                {{-- ถ้าจ่ายเงินแล้ว: แสดงปุ่ม "ยืนยันและพิมพ์" --}}
-                <a href="{{ route('admin.orders.receipt', $order->id) }}" class="btn btn-success btn-block">
-                    ยืนยันและพิมพ์ใบปะหน้าสินค้า
-                </a>
+                    {{-- ถ้าจ่ายเงินแล้ว: แสดงปุ่ม "เริ่มเตรียมสินค้า" --}}
+                    <form action="{{ route('admin.orders.prepare', $order->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" class="btn btn-theme btn-block">เริ่มเตรียมสินค้า</button>
+                    </form>
+                
+                @elseif($order->order_status_id == 6)
+                    {{-- ถ้ากำลังเตรียม: แสดงปุ่ม "ยืนยันและพิมพ์ใบเสร็จ" --}}
+                    <a href="{{ route('admin.orders.receipt', $order->id) }}" class="btn btn-success btn-block">
+                        ยืนยันและพิมพ์ใบปะหน้าสินค้า
+                    </a>
+
                 @elseif(in_array($order->order_status_id, [3, 5]))
                     {{-- ถ้ากำลังส่ง หรือ ส่งแล้ว: แสดงปุ่ม "พิมพ์อีกครั้ง" --}}
-                    <a href="{{ route('admin.orders.receipt', $order->id) }}" class="btn btn-success btn-block">
+                    <a href="{{ route('admin.orders.receipt', $order->id) }}" class="btn btn-secondary btn-block">
                         พิมพ์ใบปะหน้าสินค้าอีกครั้ง
                     </a>
                 @elseif($order->order_status_id == 4 && $order->cancellation)
                     {{-- ถ้าถูกยกเลิก: แสดงปุ่ม "ดูรายละเอียดการยกเลิก" --}}
-                    <a href="{{ route('admin.order-cancels.show', $order->cancellation->id) }}" class="btn btn-secondary btn-block">
+                    <a href="{{ route('admin.order-cancels.show', $order->cancellation->id) }}" class="btn btn-info btn-block">
                         ดูรายละเอียดการยกเลิก
                     </a>
                 @else
                     {{-- สถานะอื่นๆ (เช่น ยังไม่จ่ายเงิน) --}}
                     <p class="text-muted text-center">ไม่มีการดำเนินการสำหรับสถานะนี้</p>
                 @endif
-
             </div>
         </div>
     </div>

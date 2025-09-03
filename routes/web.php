@@ -172,6 +172,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/orders/shipping', [OrderController::class, 'shipping'])->name('admin.orders.shipping');
         Route::get('/orders/delivered', [AdminOrderController::class, 'delivered'])->name('admin.orders.delivered');
         Route::get('/orders/{order}', [OrderController::class, 'show'])->name('admin.orders.show'); // แสดงรายละเอียด
+        Route::put('/orders/{order}/prepare', [AdminOrderController::class, 'prepare'])->name('admin.orders.prepare');
 
         //Receipt
         Route::get('/orders/{order}/receipt', [OrderController::class, 'showReceipt'])->name('admin.orders.receipt');

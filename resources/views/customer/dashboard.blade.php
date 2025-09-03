@@ -172,10 +172,12 @@
                                             <!-- 3 = กำลังจัดส่ง -->
                                             <!-- 4 = ยกเลิกการสั่ง -->
                                             <!-- 5 = จัดส่งสำเร็จ --> 
+                                            <!-- 6 = กำลังเตรียมสินค้า -->
                                             <span class="badge
                                                 @if($order->status->id == 1) bg-warning text-dark 
-                                                @elseif($order->status->id == 2) bg-info
-                                                @elseif($order->status->id == 3) bg-primary
+                                                @elseif($order->status->id == 2) bg-info 
+                                                @elseif($order->status->id == 6) bg-success-subtle text-success
+                                                @elseif($order->status->id == 3) bg-primary-subtle text-primary
                                                 @elseif($order->status->id == 4) bg-danger text-white
                                                 @else bg-success 
                                                 @endif">

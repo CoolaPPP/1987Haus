@@ -49,9 +49,55 @@
         </div>
 
         <div class="card shadow-sm p-4 mb-4">
+            <h5 class="mb-3" style="color: #504b38;">รายละเอียดสินค้า</h5>
+
+            @php
+                use App\Models\Product;
+            @endphp
+
+            @foreach(session('cart', []) as $index => $item)
+                @php
+                    $product = Product::find($index);
+                    $categoryId = $product ? $product->producttype_id : null;
+                @endphp
+
+                @for($i = 1; $i <= $item['quantity']; $i++)
+                    <div class="mb-3 p-3 border rounded bg-light">
+                        <p class="fw-bold mb-2" style="color:#504b38;">
+                            {{ $item['name'] }} - แก้วที่ {{ $i }}
+                        </p>
+
+                        {{-- ถ้าเป็นกาแฟ --}}
+                        @if(in_array($categoryId, [1,2,3,7]))
+                            <div class="mb-2">
+                                <label class="form-label">เลือกระดับการคั่ว</label>
+                                <select name="items[{{ $index }}][{{ $i }}][roast]" class="form-select">
+                                    <option value="คั่วอ่อน">คั่วอ่อน</option>
+                                    <option value="คั่วกลาง">คั่วกลาง</option>
+                                    <option value="คั่วเข้ม">คั่วเข้ม</option>
+                                </select>
+                            </div>
+                        @endif
+
+                        {{-- ความหวาน --}}
+                        <div class="mb-2">
+                            <label class="form-label">เลือกระดับความหวาน</label>
+                            <select name="items[{{ $index }}][{{ $i }}][sweetness]" class="form-select">
+                                <option value="ไม่หวาน">ไม่หวาน</option>
+                                <option value="หวานน้อย">หวานน้อย</option>
+                                <option value="หวานปกติ">หวานปกติ</option>
+                                <option value="เพิ่มความหวาน">หวานตัดขา</option>
+                            </select>
+                        </div>
+                    </div>
+                @endfor
+            @endforeach
+        </div>
+
+        <div class="card shadow-sm p-4 mb-4">
             <h5 class="mb-3" style="color: #504b38;">ข้อความเพิ่มเติม</h5>
             <div class="form-group">
-                <textarea name="order_note" class="form-control" rows="3" placeholder="สามารถใส่รายละเอียดของการสั่งสินค้าเพิ่มเติมได้ที่นี่ เช่น ระบุระดับความหวานของเครื่องดื่ม การแยกน้ำแข็ง หรือรายละเอียดอื่น ๆ ได้"></textarea>
+                <textarea name="order_note" class="form-control" rows="3" placeholder="สามารถใส่รายละเอียดของการสั่งสินค้าเพิ่มเติมได้ที่นี่ เช่น การแยกน้ำแข็ง หรือรายละเอียดอื่น ๆ ได้"></textarea>
             </div>
         </div>
 

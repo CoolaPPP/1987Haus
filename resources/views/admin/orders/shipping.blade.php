@@ -5,6 +5,25 @@
 @section('content-header', 'หน้าแสดงรายการการสั่งที่กำลังจัดส่ง')
 
 @section('content')
+<style>
+    .btn-theme {
+        background-color: #504b38;
+        color: #f8f3d9;
+        border: none;
+    }
+    .btn-theme:hover {
+        background-color: #b9b28a;
+        color: #504b38;
+    }
+    .btn-outline-theme {
+        border: 1px solid #504b38;
+        color: #504b38;
+    }
+    .btn-outline-theme:hover {
+        background-color: #504b38;
+        color: #f8f3d9;
+    }
+</style>
 <div class="card">
     <div class="card-header"><h3 class="card-title">รายการการสั่งที่กำลังจัดส่ง</h3></div>
     <div class="card-body">
@@ -27,7 +46,7 @@
                     <td>฿{{ number_format($order->net_price, 2) }}</td>
                     <td>
                         {{-- ลิงก์สำหรับดูรายละเอียด หรือพิมพ์ใบเสร็จซ้ำ --}}
-                        <a href="{{ route('admin.orders.show', $order->id) }}" class="btn btn-sm btn-info">แสดงรายละเอียด</a>
+                        <a href="{{ route('admin.orders.show', $order->id) }}" class="btn btn-sm btn-theme">แสดงรายละเอียด</a>
                     </td>
                 </tr>
                 @empty

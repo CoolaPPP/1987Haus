@@ -5,6 +5,25 @@
 @section('content-header', 'หน้าแสดงข้อมูลการยกเลิกการสั่งซื้อ')
 
 @section('content')
+<style>
+    .btn-theme {
+        background-color: #504b38;
+        color: #f8f3d9;
+        border: none;
+    }
+    .btn-theme:hover {
+        background-color: #b9b28a;
+        color: #504b38;
+    }
+    .btn-outline-theme {
+        border: 1px solid #504b38;
+        color: #504b38;
+    }
+    .btn-outline-theme:hover {
+        background-color: #504b38;
+        color: #f8f3d9;
+    }
+</style>
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">ข้อมูลการยกเลิกการสั่งซื้อ</h3>
@@ -30,7 +49,7 @@
                     <td>{{ $cancel->customer->name }}</td>
                     <td>฿{{ number_format($cancel->cancel_price, 2) }}</td>
                     <td>{{ \Carbon\Carbon::parse($cancel->cancel_datetime)->format('d M Y, H:i') }}</td>
-                    <td><a href="{{ route('admin.order-cancels.show', $cancel->id) }}" class="btn btn-sm btn-secondary">แสดงรายละเอียด</a></td>
+                    <td><a href="{{ route('admin.order-cancels.show', $cancel->id) }}" class="btn btn-sm btn-outline-theme">แสดงรายละเอียด</a></td>
                 </tr>
                 @empty
                 <tr>

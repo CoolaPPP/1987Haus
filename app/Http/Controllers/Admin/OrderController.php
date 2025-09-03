@@ -13,8 +13,8 @@ class OrderController extends Controller
     //new orders
     public function index()
     {
-        $newOrders = Order::where('order_status_id', 2)
-            ->with('customer')
+        $newOrders = Order::whereIn('order_status_id', [2,6])
+            ->with('customer','payment')
             ->latest('order_datetime')
             ->paginate(15);
             
@@ -82,5 +82,15 @@ class OrderController extends Controller
     {
         $confirmations = OrderConfirm::with(['customer', 'payment.order'])->latest()->paginate(15);
         return view('admin.order_confirms.index', compact('confirmations'));
+    }
+
+    public function prepare(Order $order)
+    {
+        // อัปเดตสถานะเฉพาะเมื่อสถานะปัจจุบันคือ "ชำระเงินสำเร็จ"
+        if ($order->order_status_id == 2) {
+            $order->update(['order_status_id' => 6]);
+            return back()->with('success', 'การสั่งนี้กำลังจัดเตรียม".');
+        }
+        return back()->with('error', 'การสั่งนี้ไม่สามารถจัดเตรียมได้ในสถานะปัจจุบัน.');
     }
 }

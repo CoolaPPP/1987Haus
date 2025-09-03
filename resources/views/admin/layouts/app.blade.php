@@ -1,3 +1,4 @@
+@include('admin.layouts.partials.info')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,13 +7,10 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
-        <!-- Navbar -->
         @include('admin.layouts.partials.navbar')
 
-        <!-- Sidebar -->
         @include('admin.layouts.partials.sidebar')
 
-        <!-- Content Wrapper -->
         <div class="content-wrapper" style="background:#f8f3d9;">
             <div class="content-header">
                 <div class="container-fluid">
@@ -26,11 +24,9 @@
             </section>
         </div>
 
-        <!-- Footer -->
         @include('admin.layouts.partials.footer')
     </div>
 
-    <!-- Scripts -->
     @include('admin.layouts.partials.scripts')
 </body>
 </html>
