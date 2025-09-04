@@ -1,8 +1,27 @@
 @extends('layouts.app')
 
-@section('title', 'Confirm Cancellation')
+@section('title', '1987 Haus | Confirm Cancellation')
 
 @section('content')
+<style>
+    .btn-theme {
+        background-color: #504b38;
+        color: #f8f3d9;
+        border: none;
+    }
+    .btn-theme:hover {
+        background-color: #b9b28a;
+        color: #504b38;
+    }
+    .btn-outline-theme {
+        border: 1px solid #504b38;
+        color: #504b38;
+    }
+    .btn-outline-theme:hover {
+        background-color: #504b38;
+        color: #f8f3d9;
+    }
+</style>
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -53,7 +72,7 @@
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-lg btn-block">ใช่, ยืนยันการยกเลิก</button>
-                        <a href="{{ route('customer.dashboard') }}" class="btn btn-secondary btn-block mt-2">ย้อนกลับ</a>
+                        <a href="{{ route('customer.dashboard') }}" class="btn btn-outline-theme btn-block mt-2">ย้อนกลับ</a>
                     </form>
                 </div>
             </div>

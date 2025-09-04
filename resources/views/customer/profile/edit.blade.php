@@ -108,6 +108,9 @@
                     ยืนยัน
                 </button>
             </form>
+            <div class="text-center mt-4">
+                <a href="{{ route('customer.dashboard') }}" class="btn btn-block btn-outline-theme w-100">ย้อนกลับ</a>
+            </div>
         </div>
     </div>
 </div>

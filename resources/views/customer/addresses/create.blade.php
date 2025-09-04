@@ -31,14 +31,11 @@
         color: #f8f3d9;
     }
 </style>
-<div class="container py-5" style="background-color: #f8f3d9;">
+<div class="container py-5" style="background-color: #f8f3d9; border-radius: 12px;">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <!-- Card -->
+            <h2 class="text-center mb-4" style="color: #504b38; font-weight: bold;">เพิ่มที่อยู่สำหรับจัดส่งสินค้าใหม่</h2>
             <div class="card shadow-sm border-0" style="background-color: #ebe5c2;">
-                <div class="card-header text-white text-center" style="background-color: #504b38;">
-                    <h4 class="mb-0">เพิ่มที่อยู่สำหรับจัดส่งสินค้าใหม่</h4>
-                </div>
                 <div class="card-body">
 
                     <!-- Show validation errors -->
@@ -86,6 +83,9 @@
                             </button>
                         </div>
                     </form>
+                    <div class="text-center mt-4">
+                        <a href="{{ route('customer.dashboard') }}" class="btn btn-block btn-outline-theme w-100">ย้อนกลับ</a>
+                    </div>
                 </div>
             </div>
             <!-- End Card -->
