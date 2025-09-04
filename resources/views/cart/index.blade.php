@@ -132,7 +132,7 @@
                             <h3 class="fw-bold" style="color: #504b38;">ราคาสุทธิ : ฿{{ number_format($total, 2) }}</h3>
                         @endif
 
-                        <a href="{{ route('checkout.address') }}" class="btn btn-theme w-100 mt-3">เลือกที่อยู่จัดส่ง เพื่อยืนยันการสั่งซื้อ</a>
+                        <a href="{{ route('checkout.address') }}" class="btn btn-theme w-100 mt-3">ดูรายละเอียดการสั่งและเลือกที่อยู่จัดส่ง เพื่อยืนยันการสั่งซื้อ</a>
                     </div>
                 </div>
             </div>

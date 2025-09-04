@@ -27,7 +27,7 @@
 </style>
 
 <div class="container py-5">
-    <h2 class="fw-bold text-center mb-4" style="color: #504b38;">เลือกที่อยู่สำหรับจัดส่งสินค้า</h2>
+    <h2 class="fw-bold text-center mb-4" style="color: #504b38;">รายละเอียดของสินค้า และที่อยู่สำหรับจัดส่งสินค้า</h2>
 
     <form action="{{ route('checkout.place-order') }}" method="POST">
         @csrf
@@ -67,28 +67,56 @@
                             {{ $item['name'] }} - แก้วที่ {{ $i }}
                         </p>
 
-                        {{-- ถ้าเป็นกาแฟ --}}
-                        @if(in_array($categoryId, [1,2,3,7]))
-                            <div class="mb-2">
-                                <label class="form-label">เลือกระดับการคั่ว</label>
-                                <select name="items[{{ $index }}][{{ $i }}][roast]" class="form-select">
-                                    <option value="คั่วอ่อน">คั่วอ่อน</option>
-                                    <option value="คั่วกลาง">คั่วกลาง</option>
-                                    <option value="คั่วเข้ม">คั่วเข้ม</option>
-                                </select>
+                            @if(in_array($categoryId, [1,2,3,7]))
+                                <div class="mb-3">
+                                    <label class="form-label d-block">เลือกระดับการคั่ว</label>
+                                    <div class="form-check mb-1 ps-5 mt-2">
+                                        <input class="form-check-input mt-3" type="radio" name="items[{{ $index }}][{{ $i }}][roast]" id="roast-light-{{ $index }}-{{ $i }}" value="คั่วอ่อน">
+                                        <label class="form-check-label ps-3" for="roast-light-{{ $index }}-{{ $i }}">
+                                            คั่วอ่อน <br>Ethiopia Yirgacheffe Geisha | <small class="text-muted">Taste note : Jasmin, Peach, Brown sugar, Green tea</small>
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-1 ps-5 mt-2">
+                                        <input class="form-check-input mt-3" type="radio" name="items[{{ $index }}][{{ $i }}][roast]" id="roast-medium-{{ $index }}-{{ $i }}" value="คั่วกลาง" checked>
+                                        <label class="form-check-label ps-3" for="roast-medium-{{ $index }}-{{ $i }}">
+                                            คั่วกลาง <br>Thailand Mea Jan Tai / Brazil Santos Blend | <small class="text-muted">Taste note : Frutty, Caramel, Smooth body</small>
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-1 ps-5 mt-2">
+                                        <input class="form-check-input mt-3" type="radio" name="items[{{ $index }}][{{ $i }}][roast]" id="roast-dark-{{ $index }}-{{ $i }}" value="คั่วเข้ม">
+                                        <label class="form-check-label ps-3" for="roast-dark-{{ $index }}-{{ $i }}">
+                                            คั่วเข้ม <br>Thailand Pang Khon / Lao Bolaven Blend | <small class="text-muted">Taste note : Dark Chocolate, Caramel, Brown sugar, Nutty</small>
+                                        </label>
+                                    </div>
+                                </div>
+                            @endif
+                            <div class="mb-3">
+                                <label class="form-label d-block">เลือกระดับความหวาน</label>
+                                <div class="form-check mb-1 ps-5 mt-2">
+                                    <input class="form-check-input mt-3" type="radio" name="items[{{ $index }}][{{ $i }}][sweetness]" id="sweet-0-{{ $index }}-{{ $i }}" value="ไม่หวาน">
+                                    <label class="form-check-label ps-3" for="sweet-0-{{ $index }}-{{ $i }}">
+                                        ไม่หวาน <br>ความหวาน 0% | <small class="text-muted">เหมาะสำหรับคนที่ไม่ชอบความหวาน</small>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-1 ps-5 mt-2">
+                                    <input class="form-check-input mt-3" type="radio" name="items[{{ $index }}][{{ $i }}][sweetness]" id="sweet-1-{{ $index }}-{{ $i }}" value="หวานน้อย">
+                                    <label class="form-check-label ps-3" for="sweet-1-{{ $index }}-{{ $i }}">
+                                        หวานน้อย <br>ความหวาน 50% | <small class="text-muted">รสกลมกล่อม หวานเบา ๆ</small>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-1 ps-5 mt-2">
+                                    <input class="form-check-input mt-3" type="radio" name="items[{{ $index }}][{{ $i }}][sweetness]" id="sweet-2-{{ $index }}-{{ $i }}" value="หวานปกติ" checked>
+                                    <label class="form-check-label ps-3" for="sweet-2-{{ $index }}-{{ $i }}">
+                                        หวานปกติ <br>ความหวาน 100% | <small class="text-muted">ระดับความหวานปกติของร้าน หวานพอดี</small>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-1 ps-5 mt-2">
+                                    <input class="form-check-input mt-3" type="radio" name="items[{{ $index }}][{{ $i }}][sweetness]" id="sweet-3-{{ $index }}-{{ $i }}" value="เพิ่มความหวาน">
+                                    <label class="form-check-label ps-3" for="sweet-3-{{ $index }}-{{ $i }}">
+                                        หวานตัดขา <br>ความหวาน 300% | <small class="text-muted">หวานจัดจ้าน เหมาะกับสายหวานแท้ ๆ</small>
+                                    </label>
+                                </div>
                             </div>
-                        @endif
-
-                        {{-- ความหวาน --}}
-                        <div class="mb-2">
-                            <label class="form-label">เลือกระดับความหวาน</label>
-                            <select name="items[{{ $index }}][{{ $i }}][sweetness]" class="form-select">
-                                <option value="ไม่หวาน">ไม่หวาน</option>
-                                <option value="หวานน้อย">หวานน้อย</option>
-                                <option value="หวานปกติ">หวานปกติ</option>
-                                <option value="เพิ่มความหวาน">หวานตัดขา</option>
-                            </select>
-                        </div>
                     </div>
                 @endfor
             @endforeach
@@ -102,8 +130,8 @@
         </div>
 
         <div class="text-center">
-            <button type="submit" class="btn btn-theme btn-lg px-5">
-                ยืนยันที่อยู่
+            <button type="submit" class="btn btn-theme btn-block px-5">
+                ยืนยัน
             </button>
         </div>
     </form>

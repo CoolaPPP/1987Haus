@@ -130,7 +130,6 @@ Route::prefix('admin')->group(function () {
 
         // Admin Dashboard
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
-        // Route::get('/dashboard/show-product', [ShowProductController::class, 'index'])->name('admin.show-product');   
 
         // Product Types 
         Route::get('/product-types', [ProductTypeController::class, 'index'])->name('admin.product-types.index');
@@ -140,12 +139,6 @@ Route::prefix('admin')->group(function () {
         Route::delete('/product-types/{id}', [ProductTypeController::class, 'destroy'])->name('admin.product-types.destroy');
 
         // Products 
-        // Route::get('/products', [ProductController::class, 'index'])->name('admin.products.index');
-        // Route::get('/products/create', [ProductController::class, 'create'])->name('admin.products.create');
-        // Route::post('/products', [ProductController::class, 'store'])->name('admin.products.store');
-        // Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('admin.products.edit'); 
-        // Route::post('/products/{id}', [ProductController::class, 'update'])->name('admin.products.update'); 
-        // Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
         Route::resource('products', ProductController::class)->names('admin.products');
         
         // Recommended Products
@@ -168,10 +161,10 @@ Route::prefix('admin')->group(function () {
         ->names('admin.order-statuses');
 
         //Order
-        Route::get('/orders/new', [OrderController::class, 'index'])->name('admin.orders.new'); // แสดงรายการที่จ่ายเงินแล้ว
+        Route::get('/orders/new', [OrderController::class, 'index'])->name('admin.orders.new');
         Route::get('/orders/shipping', [OrderController::class, 'shipping'])->name('admin.orders.shipping');
         Route::get('/orders/delivered', [AdminOrderController::class, 'delivered'])->name('admin.orders.delivered');
-        Route::get('/orders/{order}', [OrderController::class, 'show'])->name('admin.orders.show'); // แสดงรายละเอียด
+        Route::get('/orders/{order}', [OrderController::class, 'show'])->name('admin.orders.show');
         Route::put('/orders/{order}/prepare', [AdminOrderController::class, 'prepare'])->name('admin.orders.prepare');
 
         //Receipt
@@ -185,8 +178,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/order-confirmations', [OrderController::class, 'confirmations'])->name('admin.order-confirmations.index');
 
         //Order Cancel
-        Route::get('/order-cancels', [AdminOrderCancelController::class, 'index'])->name('admin.order-cancels.index'); // <-- Route ใหม่
-        Route::get('/order-cancels/{orderCancel}', [AdminOrderCancelController::class, 'show'])->name('admin.order-cancels.show'); // <-- Route ใหม่
+        Route::get('/order-cancels', [AdminOrderCancelController::class, 'index'])->name('admin.order-cancels.index'); 
+        Route::get('/order-cancels/{orderCancel}', [AdminOrderCancelController::class, 'show'])->name('admin.order-cancels.show'); 
 
         //Order Canceled
         Route::get('/canceled-orders', [CanceledOrderController::class, 'index'])->name('admin.canceled-orders.index');
