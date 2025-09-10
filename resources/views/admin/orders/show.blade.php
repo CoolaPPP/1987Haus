@@ -130,18 +130,18 @@
                 
                 @elseif($order->order_status_id == 6)
                     {{-- ถ้ากำลังเตรียม: แสดงปุ่ม "ยืนยันและพิมพ์ใบเสร็จ" --}}
-                    <a href="{{ route('admin.orders.receipt', $order->id) }}" class="btn btn-success btn-block">
+                    <a href="{{ route('admin.orders.receipt', $order->id) }}" class="btn btn-lg btn-success btn-block">
                         ยืนยันและพิมพ์ใบปะหน้าสินค้า
                     </a>
 
                 @elseif(in_array($order->order_status_id, [3, 5]))
                     {{-- ถ้ากำลังส่ง หรือ ส่งแล้ว: แสดงปุ่ม "พิมพ์อีกครั้ง" --}}
-                    <a href="{{ route('admin.orders.receipt', $order->id) }}" class="btn btn-secondary btn-block">
+                    <a href="{{ route('admin.orders.receipt', $order->id) }}" class="btn btn-lg btn-theme btn-block">
                         พิมพ์ใบปะหน้าสินค้าอีกครั้ง
                     </a>
                 @elseif($order->order_status_id == 4 && $order->cancellation)
                     {{-- ถ้าถูกยกเลิก: แสดงปุ่ม "ดูรายละเอียดการยกเลิก" --}}
-                    <a href="{{ route('admin.order-cancels.show', $order->cancellation->id) }}" class="btn btn-info btn-block">
+                    <a href="{{ route('admin.order-cancels.show', $order->cancellation->id) }}" class="btn btn-lg btn-danger btn-block">
                         ดูรายละเอียดการยกเลิก
                     </a>
                 @else

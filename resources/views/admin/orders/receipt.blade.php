@@ -28,7 +28,7 @@
                 class="btn btn-lg btn-success" 
                 data-status="{{ $order->order_status_id }}" 
                 data-redirect-url="{{ route('admin.orders.new') }}">
-            @if($order->order_status_id = 6)
+            @if($order->order_status_id == 6)
                 ยินยันและพิมพ์ใบปะหน้าสินค้า
             @else
                 พิมพ์ซ้ำ 
@@ -88,8 +88,10 @@
         const printButton = this;
         const currentStatus = parseInt(printButton.dataset.status);
         const redirectUrl = printButton.dataset.redirectUrl;
-        
-        const isAlreadyProcessed = currentStatus >= 3;
+
+        // ตรวจสอบสถานะ
+        const processedStatuses = [3, 5];
+        const isAlreadyProcessed = processedStatuses.includes(currentStatus);
 
         // ถ้ายังไม่เคยประมวลผล
         if (!isAlreadyProcessed) {

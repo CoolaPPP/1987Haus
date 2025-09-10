@@ -43,16 +43,6 @@ class OrderController extends Controller
         return view('admin.orders.delivered', compact('deliveredOrders'));
     }
 
-    // public function canceled()
-    // {
-    //     $canceledOrders = Order::where('order_status_id', 4)
-    //         ->with('customer')
-    //         ->latest('updated_at')
-    //         ->paginate(15);
-            
-    //     return view('admin.orders.canceled', compact('canceledOrders'));
-    // }
-
     public function show(Order $order)
     {
         $order->load(['customer', 'shippingAddress', 'promotion', 'details.product', 'payment', 'confirmation','cancellation']);
@@ -71,10 +61,15 @@ class OrderController extends Controller
 
     public function updateStatus(Order $order)
     {
-        if ($order->order_status_id < 3) {
+        // อัปเดตเป็น "กำลังจัดส่ง" ก็ต่อเมื่อยังไม่ถูกจัดส่ง
+        if (!in_array($order->order_status_id, [3, 5])) {
             $order->update(['order_status_id' => 3]);
         }
-        return response()->json(['success' => true, 'redirect_url' => route('admin.orders.new')]);
+
+        return response()->json([
+            'success' => true,
+            'redirect_url' => route('admin.orders.new')
+        ]);
     }
 
     //Order Confirmation
