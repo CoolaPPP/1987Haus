@@ -28,7 +28,7 @@
                 class="btn btn-lg btn-success" 
                 data-status="{{ $order->order_status_id }}" 
                 data-redirect-url="{{ route('admin.orders.new') }}">
-            @if($order->order_status_id < 3)
+            @if($order->order_status_id = 6)
                 ยินยันและพิมพ์ใบปะหน้าสินค้า
             @else
                 พิมพ์ซ้ำ 
